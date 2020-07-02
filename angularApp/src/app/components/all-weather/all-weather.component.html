@@ -1,0 +1,37 @@
+<div>
+    <mat-form-field class="top-of-page-actions">
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search...">
+    </mat-form-field>
+    <br>
+</div>
+
+<div class="table-wrapper">
+    <div class="table-scroll">
+        <table mat-table [dataSource]="weatherDataSource" matSort matSortActive="id" matSortDirection="asc">
+
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <td mat-cell *matCellDef="let weather">{{weather.id}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+                <td mat-cell *matCellDef="let weather"> {{weather.observation_time}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="temp">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Temperature </th>
+                <td mat-cell *matCellDef="let weather"> {{weather.temp}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="weather_code">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Weather </th>
+                <td mat-cell *matCellDef="let weather"> {{weather.weather_code}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>
+<mat-paginator #sightPaginator [pageSize]="10" [pageSizeOptions]="[10, 20, 40]">></mat-paginator>

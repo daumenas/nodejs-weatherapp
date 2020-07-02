@@ -1,0 +1,15 @@
+<div class="cardContainer">
+    <mat-card *ngFor="let weather of listOfData" class="cardStyle">
+        <div style="width: 118px">
+            <mat-card-title class="cardTitle">Vilnius</mat-card-title>
+            <mat-card-subtitle class="cardSubtitle">{{weather.observation_time | date:'longDate' : '+0000'}}
+            </mat-card-subtitle>
+            <mat-card-subtitle class="cardSubtitle">{{weather.observation_time | date:'shortTime' : '+0000'}}
+            </mat-card-subtitle>
+            <mat-card-title class="cardTitle">Temperature</mat-card-title>
+            <mat-card-subtitle style="font-size: medium;" class="cardSubtitle"><b>{{weather.temp | number:'1.0-0'}}</b>
+            </mat-card-subtitle>
+            <mat-icon>{{iconMap[weather.weather_code]}}</mat-icon>
+        </div>
+    </mat-card>
+</div>
